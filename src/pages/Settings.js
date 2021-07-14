@@ -22,7 +22,7 @@ const Settings = ({ logout, showSettings, toggleSettings, loggedInUser }) => {
         </HeaderButtons>
       </Header>
       <Text style={{ color: "#fff" }}>Logged as {loggedInUser}</Text>
-      <StyledButton primary onPress={logout} title="Logout" />
+      <StyledButton onPress={logout} title="Logout" />
     </Drawer>
   );
 };

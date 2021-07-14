@@ -42,7 +42,6 @@ const Notifications = ({
             )
           )}
           <StyledButton
-            primary
             onClick={clearBadgeText}
             margin="0 0 16px 0"
             title="Delete all"
