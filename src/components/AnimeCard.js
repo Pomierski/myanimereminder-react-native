@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Image, Text, View } from "react-native";
-import * as Progress from "react-native-progress";
+
 import { MotiView } from "@motify/components";
+import ProgressBar from "./ProgressBar";
 
 const Wrapper = styled(MotiView)`
   width: 100%;
@@ -48,21 +49,14 @@ const StyledA = styled(Text)`
   font-weight: bold;
 `;
 
-const StyledProgressBar = styled(Progress.Bar)`
-  position: absolute;
-  bottom: 9px;
-  left: 0;
-  width: 100%;
-`;
-
 const AnimeCard = ({
-  animeUrl,
+  mal_id,
   imgUrl,
   title,
   progress,
   progressMax,
-  aired,
-  endDate,
+  airingDay,
+  airingDate,
   type,
 }) => (
   <Wrapper from={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -70,7 +64,7 @@ const AnimeCard = ({
     <Column>
       <CardHeader>
         <StyledA
-          href={animeUrl}
+          href={`https://myanimelist.net/anime/${mal_id}`}
           target="_blank"
           rel="nofollow noopener noreferrer"
         >
@@ -79,11 +73,12 @@ const AnimeCard = ({
       </CardHeader>
       <Desc>
         <StyledText>Type: {type}</StyledText>
-        <StyledText>Aired: {aired}</StyledText>
-        <StyledText>Est. end date: {endDate}</StyledText>
+        <StyledText>Next episode: {airingDay}</StyledText>
+        <StyledText>{airingDate}</StyledText>
       </Desc>
-      <StyledProgressBar
-        progress={progressMax ? progress / progressMax : 0.5}
+      <ProgressBar
+        progress={progress}
+        progressMax={progressMax}
         width={null}
         height={16}
       />

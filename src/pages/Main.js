@@ -7,6 +7,7 @@ import HeaderButtons from "../components/Header/HeaderButtons";
 import Badge from "../components/NotificationBadge";
 import { Text } from "react-native";
 import { IconButton } from "react-native-paper";
+import { formatDateToDateString } from "../utility/formatDateToDateString";
 
 const Main = ({
   toggleSettings,
@@ -43,33 +44,27 @@ const Main = ({
       {animeList && animeList.length ? (
         animeList.map(
           ({
-            url,
             mal_id,
             title,
             image_url,
-            airing_start,
             watched_episodes,
             episodes,
+            airingDay,
+            airingDate,
             type,
-          }) => {
-            const { startDateLocalized, endDateLocalized, airingDay } =
-              getEndDateForAnime(airing_start, episodes);
-
-            return (
-              <AnimeCard
-                animeUrl={url}
-                key={mal_id}
-                title={title}
-                imgUrl={image_url}
-                aired={startDateLocalized}
-                endDate={endDateLocalized}
-                progress={watched_episodes}
-                progressMax={episodes}
-                airingDay={airingDay}
-                type={type}
-              />
-            );
-          }
+          }) => (
+            <AnimeCard
+              mal_id={mal_id}
+              key={mal_id}
+              title={title}
+              imgUrl={image_url}
+              progress={watched_episodes}
+              progressMax={episodes}
+              airingDay={airingDay}
+              type={type}
+              airingDate={formatDateToDateString(airingDate)}
+            />
+          )
         )
       ) : (
         <Text style={{ color: "#fff" }}>No airing animes found on list</Text>
