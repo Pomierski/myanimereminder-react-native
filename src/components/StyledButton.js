@@ -1,30 +1,43 @@
-import { Button } from "react-native";
+import React from "react";
+import { Text, TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components";
 
-const StyledButton = styled(Button)`
+const Button = styled(TouchableOpacity)`
+  border: 0;
+  border-radius: 5px;
+  background: ${(props) => props.theme.accentColor};
+  padding: 8px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${(props) => props.width || "100px"};
+  height: ${(props) => props.height || "40px"};
+  margin: ${(props) => (props.margin ? props.margin : "16px 0px")};
   ${(props) =>
-    props.primary &&
+    props.disabled &&
     css`
-      border: 0;
-      border-radius: 999px;
-      background: ${(props) => props.theme.accentColor};
-      padding: 8px 16px;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background: #1560a2;
     `}
-  ${(props) =>
-    props.icon &&
-    css`
-      border: 0;
-      background-color: transparent;
-      color: ${(props) => props.theme.accentColor};
-      font-size: 24px;
-      height: 24px;
-      padding: 12.8px;
-    `}
-    margin: ${(props) => (props.margin ? props.margin : 0)}px;
 `;
+
+const StyledButton = ({
+  height,
+  width,
+  margin,
+  title,
+  onPress,
+  disabled,
+  children,
+}) => (
+  <Button
+    height={height}
+    width={width}
+    margin={margin}
+    onPress={onPress}
+    disabled={disabled}
+  >
+    <Text style={{ color: "#fff" }}>{children || title}</Text>
+  </Button>
+);
 
 export default StyledButton;
