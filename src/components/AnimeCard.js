@@ -29,6 +29,7 @@ const CardHeader = styled(Text)`
   margin: 0;
   padding: 0;
   overflow: hidden;
+  height: 37px;
   max-height: 37px;
   font-size: 15px;
 `;
