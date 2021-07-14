@@ -54,7 +54,11 @@ const Login = ({ setUserLogged, getUserData }) => {
       {showError ? (
         <ErrorMessage>Username is invalid, please try again.</ErrorMessage>
       ) : null}
-      <StyledButton onPress={handleButton} title="Login"></StyledButton>
+      <StyledButton
+        onPress={handleButton}
+        title="Login"
+        disabled={showLoading}
+      ></StyledButton>
     </View>
   );
 };
