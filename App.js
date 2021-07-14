@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
-import { SafeAreaView, ScrollView } from "react-native";
+import { Dimensions, SafeAreaView, ScrollView } from "react-native";
 import styled, { ThemeProvider } from "styled-components";
 import { theme } from "./src/styles/theme";
 import Login from "./src/pages/Login";
@@ -11,7 +11,7 @@ import { fetchUserList } from "./src/utility/fetchUserList";
 
 const Wrapper = styled(SafeAreaView)`
   width: 100%;
-  height: 100%;
+  height: ${Dimensions.get("screen").height}px;
   background-color: #171717;
   margin: 0 auto;
   padding: 36px;
