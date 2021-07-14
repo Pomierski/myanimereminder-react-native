@@ -6,7 +6,7 @@ import { Dimensions, SafeAreaView } from "react-native";
 const Wrapper = styled(MotiView)`
   padding: 36px;
   width: ${Dimensions.get("window").width}px;
-  height: 100%;
+  height: ${Dimensions.get("window").height}px;
   z-index: 3;
   top: 0;
   left: ${(props) =>
