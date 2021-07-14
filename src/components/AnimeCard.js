@@ -83,7 +83,7 @@ const AnimeCard = ({
         <StyledText>Est. end date: {endDate}</StyledText>
       </Desc>
       <StyledProgressBar
-        progress={progress / progressMax}
+        progress={progressMax ? progress / progressMax : 0.5}
         width={null}
         height={16}
       />
